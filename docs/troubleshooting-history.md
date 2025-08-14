@@ -105,3 +105,39 @@ The visual expects table data with these columns:
 3. **Role Mapping**: Column roles must match capabilities.json exactly
 4. **Silent Failures**: Errors in render don't show - need try/catch blocks
 5. **Build Artifacts**: Old compiled code can persist across builds
+
+## Repository reset and nested .git fix (2025-08-14)
+
+- **Problem**: Local folder referenced a deleted GitHub repo and contained a nested Git repository at `PBI_CVs/.git`, which caused Git to treat it like a submodule without a checked-out commit.
+- **Symptoms**:
+  - `git add` errors: “does not have a commit checked out” for the `PBI_CVs/` folder
+  - Push failures to the old remote `eek2020/PBI_CVs` (repo missing)
+- **Actions Taken**:
+  1. Removed nested Git metadata: deleted `PBI_CVs/.git`.
+  2. Added `PBI_CVs/` to `.gitignore` to prevent future submodule-like issues.
+  3. Reinitialized repository at the root `/Users/erichook-marshall/Git/PBI_CVs` and set branch to `main`.
+  4. Staged and committed all files (excluding ignored paths).
+  5. Updated remote to the new repository `https://github.com/eek2020/PBIViz.git`.
+  6. Pushed initial commit to `main`.
+- **Verification**:
+  - `git remote -v` shows `origin  https://github.com/eek2020/PBIViz.git`
+  - `git status` clean after commit
+  - GitHub repo displays the initial commit on `main`
+- **Notes**:
+  - Prefer HTTPS remotes.
+  - Avoid nested repositories unless intentionally using submodules; if accidental, remove inner `.git` and add the folder to `.gitignore`.
+
+### Reference commands (for future similar situations)
+
+```bash
+# Remove nested repo metadata and ignore the folder
+rm -rf PBI_CVs/.git
+printf "\nPBI_CVs/\n" >> .gitignore
+
+# Reinitialize and connect to the correct remote
+git init -b main
+git add .
+git commit -m "Initial commit after repo reset; ignore nested PBI_CVs/"
+git remote remove origin 2>/dev/null || true
+git remote add origin https://github.com/eek2020/PBIViz.git
+git push -u origin main

@@ -3,7 +3,7 @@
 ## Project Structure
 
 ```
-gantt-chart-powerbi/
+PBIViz/
 ├── src/
 │   ├── visual.ts                 # Main entry point (Power BI API interface)
 │   ├── settings.ts               # Visual settings/configuration classes

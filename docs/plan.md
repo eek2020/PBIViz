@@ -17,7 +17,7 @@ Diagnose and fix why the visual renders nothing despite successful packaging.
 
 ## Investigation plan (ordered)
 1. Dev-run and inspect data flow
-   - Run: `npx pbiviz start` (repo root `gantt-chart-powerbi/`).
+   - Run: `npx pbiviz start` (from the repository root).
    - In `src/visual.ts`:
      - Log when `update()` is invoked and `options.dataViews[0]` presence.
      - Log `dataView.table`, column roles, and `rows.length`.

@@ -9,7 +9,7 @@
   - powerbi-visuals-tools (global): 6.1.3
   - powerbi-visuals-api: 5.2.0
   - apiVersion (pbiviz.json): 5.2.0
-- __Repo path__: `gantt-chart-powerbi/`
+- __Repo path__: repository root
 - __Artifact__: `dist/ganttChartPowerBIVisual.1.0.0.0.pbiviz`
 
 ## Summary
