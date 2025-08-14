@@ -1,0 +1,35 @@
+@primaryColor: #2b7cd3;
+
+.gantt-chart {
+  font-family: Segoe UI, Arial, sans-serif;
+
+  .timeline {
+    .x-axis {
+      path,
+      line {
+        stroke: #ccc;
+      }
+      text {
+        fill: #666;
+        font-size: 11px;
+      }
+    }
+    .grid line {
+      stroke: #eee;
+    }
+  }
+
+  .tasks {
+    rect {
+      stroke: #fff;
+      stroke-width: 1;
+      rx: 2;
+      ry: 2;
+    }
+    text {
+      fill: #222;
+      font-size: 11px;
+      pointer-events: none;
+    }
+  }
+}

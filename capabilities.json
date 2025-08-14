@@ -1,0 +1,77 @@
+{
+  "privileges": [],
+  "dataRoles": [
+    { "name": "id",           "kind": "Grouping", "displayName": "Task ID" },
+    { "name": "name",         "kind": "Grouping", "displayName": "Task Name" },
+    { "name": "phase",        "kind": "Grouping", "displayName": "Phase" },
+    { "name": "startDate",    "kind": "Grouping", "displayName": "Start Date" },
+    { "name": "endDate",      "kind": "Grouping", "displayName": "End Date" },
+    { "name": "milestone",    "kind": "Grouping", "displayName": "Milestone" },
+    { "name": "dependencies", "kind": "Grouping", "displayName": "Dependencies" },
+    { "name": "progress",     "kind": "Measure",  "displayName": "Progress" }
+  ],
+  "dataViewMappings": [
+    {
+      "table": {
+        "rows": {
+          "select": [
+            { "for": { "in": "id" } },
+            { "for": { "in": "name" } },
+            { "for": { "in": "phase" } },
+            { "for": { "in": "startDate" } },
+            { "for": { "in": "endDate" } },
+            { "for": { "in": "milestone" } },
+            { "for": { "in": "dependencies" } },
+            { "for": { "in": "progress" } }
+          ],
+          "dataReductionAlgorithm": { "window": { "count": 30000 } }
+        }
+      }
+    }
+  ],
+  "objects": {
+    "layout": {
+      "displayName": "Layout Options",
+      "properties": {
+        "rowHeight": {
+          "displayName": "Row Height",
+          "description": "The height of each task row in pixels.",
+          "type": { "numeric": true }
+        },
+        "barHeight": {
+          "displayName": "Bar Height",
+          "description": "The height of the task bars as a percentage of row height.",
+          "type": { "numeric": true }
+        },
+        "barPadding": {
+          "displayName": "Bar Padding",
+          "description": "The padding around task bars in pixels.",
+          "type": { "numeric": true }
+        }
+      }
+    },
+    "font": {
+      "displayName": "Font Options",
+      "properties": {
+        "fontSize": {
+          "displayName": "Font Size",
+          "description": "The general font size for text elements.",
+          "type": { "numeric": true }
+        },
+        "fontFamily": {
+          "displayName": "Font Family",
+          "description": "The font family for all text.",
+          "type": { "text": true }
+        }
+      }
+    },
+    "colors": {
+      "displayName": "Color Options",
+      "properties": {
+        "task": { "displayName": "Task", "type": { "fill": { "solid": { "color": true } } } },
+        "milestone": { "displayName": "Milestone", "type": { "fill": { "solid": { "color": true } } } },
+        "dependency": { "displayName": "Dependency", "type": { "fill": { "solid": { "color": true } } } }
+      }
+    }
+  }
+}

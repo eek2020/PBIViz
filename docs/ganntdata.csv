@@ -1,0 +1,11 @@
+id;name;phase;startDate;endDate;milestone;dependencies;progress
+T1;Project kickoff;Phase A;01.08.2025;02.08.2025;TRUE;;100
+T2;Requirements;Phase A;03.08.2025;10.08.2025;FALSE;T1;50
+T3;Design;Phase B;11.08.2025;20.08.2025;FALSE;T2;20
+T4;Prototype;Phase B;15.08.2025;25.08.2025;FALSE;T2;10
+T5;Milestone 1;Phase B;25.08.2025;25.08.2025;TRUE;T3,T4;0
+T6;Build Sprint 1;Phase C;26.08.2025;05.09.2025;FALSE;T5;30
+T7;Testing;Phase C;06.09.2025;12.09.2025;FALSE;T6;0
+T8;UAT;Phase D;13.09.2025;18.09.2025;FALSE;T7;0
+T9;Milestone 2;Phase D;18.09.2025;18.09.2025;TRUE;T8;0
+T10;Release;Phase D;20.09.2025;20.09.2025;TRUE;T9;0
